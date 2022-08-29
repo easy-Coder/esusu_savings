@@ -1,5 +1,6 @@
 import 'package:esusu_savings/features/account/presentation/create_profile/create_profile_page.dart';
 import 'package:esusu_savings/features/account/repositry/account_repositry.dart';
+import 'package:esusu_savings/features/account/service/profile_services.dart';
 import 'package:esusu_savings/features/authenticate/presentation/login_page.dart';
 import 'package:esusu_savings/features/authenticate/presentation/signup_page.dart';
 import 'package:esusu_savings/features/authenticate/repositries/auth_repositry.dart';
@@ -30,13 +31,16 @@ class RouterNotifier extends ChangeNotifier {
   RouterNotifier(this._ref) {
     _ref.listen(authStateProvider, (previous, next) => notifyListeners());
     _ref.listen(appProvider, (previous, next) => notifyListeners());
+    _ref.listen(userProfileProvider, (previous, next) => notifyListeners());
   }
 
   String? _redirectLogic(GoRouterState state) {
     final user = _ref.read(authRepositryProvider).user;
     final initialized = _ref.read(appProvider).appinit;
     final onboarded = _ref.read(appProvider).onboarded;
-    bool user_profile = false;
+    final user_profile = _ref.watch(userProfileProvider).whenOrNull(
+          data: (data) => data,
+        );
 
     final loggingIn = state.location == '/login';
     final signingUp = state.location == '/signup';
@@ -59,13 +63,7 @@ class RouterNotifier extends ChangeNotifier {
       return loggingIn ? null : '/login';
     }
 
-    _ref
-        .read(accountRepositryProvider)
-        .getUser(user.uid)
-        .isEmpty
-        .then((value) => user_profile = value);
-
-    if (!user_profile) {
+    if (user_profile == null) {
       return creating_profile ? null : '/create_profile';
     }
 

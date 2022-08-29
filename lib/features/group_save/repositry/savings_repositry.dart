@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:esusu_savings/features/group_save/domain/group.dart';
+import 'package:esusu_savings/constant/general_providers.dart';
+import 'package:esusu_savings/features/group_save/domain/group/group.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SavingsPlans {
   final FirebaseFirestore _firestore;
@@ -10,12 +12,12 @@ class SavingsPlans {
     await _firestore.collection('groups').add(data.toJson());
   }
 
-  Stream<List<Group>> getUserSavingsPlans(String user) {
+  Stream<Group> getGroupPlan(String group_id) {
     return _firestore
         .collection('groups')
-        .where("members", arrayContains: user)
+        .doc(group_id)
         .snapshots()
-        .map((doc) => doc.docs.map((e) => Group.fromDocument(e)).toList());
+        .map((doc) => Group.fromDocument(doc));
   }
 
   Future<void> updateSavingsPlan(Group data) async {
@@ -29,3 +31,7 @@ class SavingsPlans {
     await _firestore.collection("groups").doc(data.id).delete();
   }
 }
+
+final savingsPlanProvider = Provider<SavingsPlans>((ref) {
+  return SavingsPlans(ref.read(fireStoreProvider));
+});

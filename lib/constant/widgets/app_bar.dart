@@ -39,7 +39,7 @@ class CustomSliverAppBar extends StatelessWidget {
       delegate: _CustomSliverAppBarDelegate(
           title, actions, MediaQuery.of(context).padding),
       pinned: true,
-      floating: false,
+      floating: true,
     );
   }
 }

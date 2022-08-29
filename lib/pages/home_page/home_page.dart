@@ -31,22 +31,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pageIndex = ref.watch(pageIndexProvider);
     return Scaffold(
-      appBar: CustomBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.add),
-          ),
-        ],
-        title: Text(
-          pageTitle[pageIndex],
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
       body: IndexedStack(
         index: pageIndex,
         children: pages,

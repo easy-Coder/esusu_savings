@@ -23,9 +23,9 @@ mixin _$Group {
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<String> get members => throw _privateConstructorUsedError;
-  @JsonKey(name: "saving_goal")
+  String get author => throw _privateConstructorUsedError;
   double get savingGoal => throw _privateConstructorUsedError;
-  @JsonEnum(fieldRename: FieldRename.snake)
+  double get savingAmount => throw _privateConstructorUsedError;
   GroupsType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,8 +41,10 @@ abstract class $GroupCopyWith<$Res> {
       {String? id,
       String name,
       List<String> members,
-      @JsonKey(name: "saving_goal") double savingGoal,
-      @JsonEnum(fieldRename: FieldRename.snake) GroupsType type});
+      String author,
+      double savingGoal,
+      double savingAmount,
+      GroupsType type});
 }
 
 /// @nodoc
@@ -58,7 +60,9 @@ class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? members = freezed,
+    Object? author = freezed,
     Object? savingGoal = freezed,
+    Object? savingAmount = freezed,
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
@@ -74,9 +78,17 @@ class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String,
       savingGoal: savingGoal == freezed
           ? _value.savingGoal
           : savingGoal // ignore: cast_nullable_to_non_nullable
+              as double,
+      savingAmount: savingAmount == freezed
+          ? _value.savingAmount
+          : savingAmount // ignore: cast_nullable_to_non_nullable
               as double,
       type: type == freezed
           ? _value.type
@@ -95,8 +107,10 @@ abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
       {String? id,
       String name,
       List<String> members,
-      @JsonKey(name: "saving_goal") double savingGoal,
-      @JsonEnum(fieldRename: FieldRename.snake) GroupsType type});
+      String author,
+      double savingGoal,
+      double savingAmount,
+      GroupsType type});
 }
 
 /// @nodoc
@@ -113,7 +127,9 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? members = freezed,
+    Object? author = freezed,
     Object? savingGoal = freezed,
+    Object? savingAmount = freezed,
     Object? type = freezed,
   }) {
     return _then(_$_Group(
@@ -129,9 +145,17 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      author: author == freezed
+          ? _value.author
+          : author // ignore: cast_nullable_to_non_nullable
+              as String,
       savingGoal: savingGoal == freezed
           ? _value.savingGoal
           : savingGoal // ignore: cast_nullable_to_non_nullable
+              as double,
+      savingAmount: savingAmount == freezed
+          ? _value.savingAmount
+          : savingAmount // ignore: cast_nullable_to_non_nullable
               as double,
       type: type == freezed
           ? _value.type
@@ -147,9 +171,11 @@ class _$_Group extends _Group {
   const _$_Group(
       {this.id,
       required this.name,
-      required final List<String> members,
-      @JsonKey(name: "saving_goal") required this.savingGoal,
-      @JsonEnum(fieldRename: FieldRename.snake) required this.type})
+      final List<String> members = const [],
+      required this.author,
+      required this.savingGoal,
+      required this.savingAmount,
+      required this.type})
       : _members = members,
         super._();
 
@@ -162,21 +188,24 @@ class _$_Group extends _Group {
   final String name;
   final List<String> _members;
   @override
+  @JsonKey()
   List<String> get members {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_members);
   }
 
   @override
-  @JsonKey(name: "saving_goal")
+  final String author;
+  @override
   final double savingGoal;
   @override
-  @JsonEnum(fieldRename: FieldRename.snake)
+  final double savingAmount;
+  @override
   final GroupsType type;
 
   @override
   String toString() {
-    return 'Group(id: $id, name: $name, members: $members, savingGoal: $savingGoal, type: $type)';
+    return 'Group(id: $id, name: $name, members: $members, author: $author, savingGoal: $savingGoal, savingAmount: $savingAmount, type: $type)';
   }
 
   @override
@@ -187,8 +216,11 @@ class _$_Group extends _Group {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
+            const DeepCollectionEquality().equals(other.author, author) &&
             const DeepCollectionEquality()
                 .equals(other.savingGoal, savingGoal) &&
+            const DeepCollectionEquality()
+                .equals(other.savingAmount, savingAmount) &&
             const DeepCollectionEquality().equals(other.type, type));
   }
 
@@ -199,7 +231,9 @@ class _$_Group extends _Group {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(_members),
+      const DeepCollectionEquality().hash(author),
       const DeepCollectionEquality().hash(savingGoal),
+      const DeepCollectionEquality().hash(savingAmount),
       const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
@@ -219,11 +253,11 @@ abstract class _Group extends Group {
   const factory _Group(
       {final String? id,
       required final String name,
-      required final List<String> members,
-      @JsonKey(name: "saving_goal")
-          required final double savingGoal,
-      @JsonEnum(fieldRename: FieldRename.snake)
-          required final GroupsType type}) = _$_Group;
+      final List<String> members,
+      required final String author,
+      required final double savingGoal,
+      required final double savingAmount,
+      required final GroupsType type}) = _$_Group;
   const _Group._() : super._();
 
   factory _Group.fromJson(Map<String, dynamic> json) = _$_Group.fromJson;
@@ -235,10 +269,12 @@ abstract class _Group extends Group {
   @override
   List<String> get members;
   @override
-  @JsonKey(name: "saving_goal")
+  String get author;
+  @override
   double get savingGoal;
   @override
-  @JsonEnum(fieldRename: FieldRename.snake)
+  double get savingAmount;
+  @override
   GroupsType get type;
   @override
   @JsonKey(ignore: true)

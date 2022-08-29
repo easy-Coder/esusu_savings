@@ -10,17 +10,17 @@ class AccountRepositry {
 
   AccountRepositry(this._firestore);
 
-  Future<void> createUser(AppUser user) async {
-    await _firestore.collection("user").add(user.toJson());
+  Future<void> createUser(String id, AppUser user) async {
+    await _firestore.collection("user").doc(id).set(user.toJson());
   }
 
-  Stream<AppUser> getUser(String id) {
+  Stream<AppUser?> getUser(String id) {
     final result = _firestore.collection("user").doc(id).snapshots();
     return result.map((event) => AppUser.fromDocument(event));
   }
 
-  Future<void> updateUser(AppUser user) async {
-    await _firestore.collection("user").doc(user.id).update(user.toJson());
+  Future<void> updateUser(String id, AppUser user) async {
+    await _firestore.collection("user").doc(id).update(user.toJson());
   }
 
   Future uploadPics(File file) async {
@@ -34,3 +34,5 @@ final accountRepositryProvider = Provider<AccountRepositry>(
     return AccountRepositry(ref.read(fireStoreProvider));
   },
 );
+
+

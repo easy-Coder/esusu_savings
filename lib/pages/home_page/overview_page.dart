@@ -28,131 +28,290 @@ class OverviewPage extends StatelessWidget {
             ),
           ],
         ),
-        SliverList(
-          delegate: SliverChildListDelegate(
-            [
-              const Space(
-                height: 80,
-              ),
-              Cards(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 30,
+        SliverPadding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.0,
+          ),
+          sliver: SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Space(
+                  height: 15,
                 ),
-                color: Theme.of(context).colorScheme.primary,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Cards(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 40,
+                  ),
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? Color(0xffD3D3D3)
+                      : Theme.of(context).colorScheme.primary,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Amount Saved",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Space(
+                            height: 10,
+                          ),
+                          Text(
+                            "₦4,000.00",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Space(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: const [
+                          Text(
+                            "Amount Invested",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Space(
+                            height: 10,
+                          ),
+                          Text(
+                            "₦20,000.00",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const Space(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          "Total Deposited",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        Space(
-                          height: 10,
-                        ),
-                        Text(
-                          "₦3,000.00",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: null,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(9999),
+                            child: ColoredBox(
+                              color: Color(0xffCFC8F1),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset("assets/Down_Icon.png"),
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const Divider(
-                      height: 30,
-                      thickness: 4,
-                      color: Color(0xffBDBDBD),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          "Total Withdrawed",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        Space(
-                          height: 10,
-                        ),
-                        Text(
-                          "₦3,000.00",
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
+                          const Space(
+                            height: 4,
                           ),
+                          Text(
+                            "Deposit",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Space(
+                      width: 30,
+                    ),
+                    GestureDetector(
+                      onTap: null,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(9999),
+                            child: ColoredBox(
+                              color: Color(0xffF6CBCB),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset("assets/Up_Icon.png"),
+                              ),
+                            ),
+                          ),
+                          const Space(
+                            height: 4,
+                          ),
+                          Text(
+                            "Withdraw",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Space(
+                      width: 30,
+                    ),
+                    GestureDetector(
+                      onTap: null,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(9999),
+                            child: ColoredBox(
+                              color: Color(0xffDFFCDD),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.asset("assets/Rent_Icon.png"),
+                              ),
+                            ),
+                          ),
+                          const Space(
+                            height: 4,
+                          ),
+                          Text(
+                            "Invest",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: const Space(
+            height: 10,
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          sliver: SliverToBoxAdapter(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "My Portfolio",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
+                  ),
+                  TextButton(child: const Text("See All"), onPressed: () {}),
+                ]),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: const Space(
+            height: 4,
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Cards(
+                margin: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: const ColoredBox(
+                        color: Colors.blue,
+                        child: SizedBox(
+                          height: 100,
+                          width: 100,
                         ),
-                      ],
+                      ),
+                    ),
+                    const Space(width: 10),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Travel Plan",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                            ),
+                          ),
+                          const Space(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                "89%",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(
+                                child: Row(
+                                  children: const [
+                                    Text("You Saved:"),
+                                    Text(
+                                      "₦400",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-              const Space(
-                height: 10,
-              ),
-              Row(
+              childCount: 10,
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          sliver: SliverToBoxAdapter(
+            child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Cards(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 12),
-                      color: Theme.of(context).colorScheme.primary,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "Total Missed",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Space(
-                            height: 10,
-                          ),
-                          Text(
-                            "8",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
+                  const Text(
+                    "My Portfolio",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
                     ),
                   ),
-                  const Space(
-                    width: 8,
-                  ),
-                  Expanded(
-                    child: Cards(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 12),
-                      color: Theme.of(context).colorScheme.primary,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "Personal Savings",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Space(
-                            height: 10,
-                          ),
-                          Text(
-                            "₦9,000.00",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  TextButton(child: const Text("See All"), onPressed: () {}),
+                ]),
           ),
         ),
         SliverToBoxAdapter(
@@ -160,95 +319,80 @@ class OverviewPage extends StatelessWidget {
             height: 4,
           ),
         ),
-        SliverToBoxAdapter(
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            const Text(
-              "Personal Goals",
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-              ),
-            ),
-            TextButton(child: const Text("See All"), onPressed: () {}),
-          ]),
-        ),
-        SliverToBoxAdapter(
-          child: const Space(
-            height: 4,
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => Cards(
-              margin: const EdgeInsets.only(bottom: 8.0),
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: const ColoredBox(
-                      color: Colors.blue,
-                      child: SizedBox(
-                        height: 100,
-                        width: 100,
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Cards(
+                margin: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: const ColoredBox(
+                        color: Colors.blue,
+                        child: SizedBox(
+                          height: 100,
+                          width: 100,
+                        ),
                       ),
                     ),
-                  ),
-                  const Space(width: 10),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Travel Plan",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
+                    const Space(width: 10),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Travel Plan",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        const Space(
-                          height: 30,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "89%",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                          const Space(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                "89%",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              child: Row(
-                                children: const [
-                                  Text("You Saved:"),
-                                  Text(
-                                    "₦400",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  )
-                                ],
+                              SizedBox(
+                                child: Row(
+                                  children: const [
+                                    Text("You Saved:"),
+                                    Text(
+                                      "₦400",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              childCount: 10,
             ),
-            childCount: 10,
           ),
         ),
         SliverToBoxAdapter(
           child: const Space(
-            height: 50,
+            height: 65,
           ),
         )
       ],

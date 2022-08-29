@@ -4,19 +4,18 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user.freezed.dart';
 part 'user.g.dart';
 
-final now = DateTime.now();
-
 @freezed
 class AppUser with _$AppUser {
   const AppUser._();
   const factory AppUser({
-    required String id,
-    required String username,
-    @JsonKey(name: "first_name") required String firstName,
+    String? id,
+    required String firstName,
     required String surname,
     required String bvn,
-    @JsonKey(name: "profile_pics") required String? profilePics,
-    @JsonKey(name: "date_created") DateTime? dateCreated,
+    required String address,
+    required String state,
+    required String? profilePics,
+    required DateTime dateCreated,
   }) = _AppUser;
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>
@@ -24,6 +23,8 @@ class AppUser with _$AppUser {
 
   static AppUser fromDocument(
       DocumentSnapshot<Map<String, dynamic>> documentSnapshot) {
-    return AppUser.fromJson(documentSnapshot.data()!);
+    final user_id = documentSnapshot.id;
+
+    return AppUser.fromJson({'id': user_id, ...documentSnapshot.data()!});
   }
 }

@@ -15,7 +15,7 @@ class ProfileService {
       final currentuser = _ref.read(authRepositryProvider).user;
       if (currentuser != null) {
         // do something
-        _ref.read(accountRepositryProvider).createUser(user);
+        _ref.read(accountRepositryProvider).createUser(currentuser.uid, user);
       } else {
         throw CustomException(
             message: "User have to be logged in to carry out operation");
@@ -25,11 +25,12 @@ class ProfileService {
     }
   }
 
-  Stream<AppUser> getUserProfile(String user_id) {
+  Stream<AppUser?> getUserProfile() {
     final currentuser = _ref.read(authRepositryProvider).user;
     if (currentuser != null) {
       // do something
-      return _ref.read(accountRepositryProvider).getUser(user_id);
+      final id = currentuser.uid;
+      return _ref.read(accountRepositryProvider).getUser(id);
     }
     return Stream<AppUser>.error(
       CustomException(
@@ -42,7 +43,7 @@ class ProfileService {
       final currentuser = _ref.read(authRepositryProvider).user;
       if (currentuser != null) {
         // do something
-        _ref.read(accountRepositryProvider).updateUser(user);
+        _ref.read(accountRepositryProvider).updateUser(currentuser.uid, user);
       } else {
         throw CustomException(
             message: "User have to be logged in to carry out operation");
@@ -52,3 +53,11 @@ class ProfileService {
     }
   }
 }
+
+final profileServiceProvider = Provider<ProfileService>((ref) {
+  return ProfileService(ref);
+});
+
+final userProfileProvider = StreamProvider<AppUser?>((ref) {
+  return ref.read(profileServiceProvider).getUserProfile();
+});

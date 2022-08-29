@@ -20,16 +20,14 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppUser {
-  String get id => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  @JsonKey(name: "first_name")
+  String? get id => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get surname => throw _privateConstructorUsedError;
   String get bvn => throw _privateConstructorUsedError;
-  @JsonKey(name: "profile_pics")
+  String get address => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
   String? get profilePics => throw _privateConstructorUsedError;
-  @JsonKey(name: "date_created")
-  DateTime? get dateCreated => throw _privateConstructorUsedError;
+  DateTime get dateCreated => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +39,14 @@ abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String username,
-      @JsonKey(name: "first_name") String firstName,
+      {String? id,
+      String firstName,
       String surname,
       String bvn,
-      @JsonKey(name: "profile_pics") String? profilePics,
-      @JsonKey(name: "date_created") DateTime? dateCreated});
+      String address,
+      String state,
+      String? profilePics,
+      DateTime dateCreated});
 }
 
 /// @nodoc
@@ -61,10 +60,11 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? username = freezed,
     Object? firstName = freezed,
     Object? surname = freezed,
     Object? bvn = freezed,
+    Object? address = freezed,
+    Object? state = freezed,
     Object? profilePics = freezed,
     Object? dateCreated = freezed,
   }) {
@@ -72,11 +72,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: username == freezed
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -89,6 +85,14 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
           ? _value.bvn
           : bvn // ignore: cast_nullable_to_non_nullable
               as String,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
       profilePics: profilePics == freezed
           ? _value.profilePics
           : profilePics // ignore: cast_nullable_to_non_nullable
@@ -96,7 +100,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
       dateCreated: dateCreated == freezed
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -108,13 +112,14 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       __$$_AppUserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String username,
-      @JsonKey(name: "first_name") String firstName,
+      {String? id,
+      String firstName,
       String surname,
       String bvn,
-      @JsonKey(name: "profile_pics") String? profilePics,
-      @JsonKey(name: "date_created") DateTime? dateCreated});
+      String address,
+      String state,
+      String? profilePics,
+      DateTime dateCreated});
 }
 
 /// @nodoc
@@ -129,10 +134,11 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? username = freezed,
     Object? firstName = freezed,
     Object? surname = freezed,
     Object? bvn = freezed,
+    Object? address = freezed,
+    Object? state = freezed,
     Object? profilePics = freezed,
     Object? dateCreated = freezed,
   }) {
@@ -140,11 +146,7 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: username == freezed
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -157,6 +159,14 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.bvn
           : bvn // ignore: cast_nullable_to_non_nullable
               as String,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
       profilePics: profilePics == freezed
           ? _value.profilePics
           : profilePics // ignore: cast_nullable_to_non_nullable
@@ -164,7 +174,7 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
       dateCreated: dateCreated == freezed
           ? _value.dateCreated
           : dateCreated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -173,39 +183,39 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AppUser extends _AppUser {
   const _$_AppUser(
-      {required this.id,
-      required this.username,
-      @JsonKey(name: "first_name") required this.firstName,
+      {this.id,
+      required this.firstName,
       required this.surname,
       required this.bvn,
-      @JsonKey(name: "profile_pics") required this.profilePics,
-      @JsonKey(name: "date_created") this.dateCreated})
+      required this.address,
+      required this.state,
+      required this.profilePics,
+      required this.dateCreated})
       : super._();
 
   factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
       _$$_AppUserFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String username;
-  @override
-  @JsonKey(name: "first_name")
   final String firstName;
   @override
   final String surname;
   @override
   final String bvn;
   @override
-  @JsonKey(name: "profile_pics")
+  final String address;
+  @override
+  final String state;
+  @override
   final String? profilePics;
   @override
-  @JsonKey(name: "date_created")
-  final DateTime? dateCreated;
+  final DateTime dateCreated;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, username: $username, firstName: $firstName, surname: $surname, bvn: $bvn, profilePics: $profilePics, dateCreated: $dateCreated)';
+    return 'AppUser(id: $id, firstName: $firstName, surname: $surname, bvn: $bvn, address: $address, state: $state, profilePics: $profilePics, dateCreated: $dateCreated)';
   }
 
   @override
@@ -214,10 +224,11 @@ class _$_AppUser extends _AppUser {
         (other.runtimeType == runtimeType &&
             other is _$_AppUser &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
             const DeepCollectionEquality().equals(other.surname, surname) &&
             const DeepCollectionEquality().equals(other.bvn, bvn) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality().equals(other.state, state) &&
             const DeepCollectionEquality()
                 .equals(other.profilePics, profilePics) &&
             const DeepCollectionEquality()
@@ -229,10 +240,11 @@ class _$_AppUser extends _AppUser {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(firstName),
       const DeepCollectionEquality().hash(surname),
       const DeepCollectionEquality().hash(bvn),
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(state),
       const DeepCollectionEquality().hash(profilePics),
       const DeepCollectionEquality().hash(dateCreated));
 
@@ -251,34 +263,34 @@ class _$_AppUser extends _AppUser {
 
 abstract class _AppUser extends AppUser {
   const factory _AppUser(
-      {required final String id,
-      required final String username,
-      @JsonKey(name: "first_name") required final String firstName,
+      {final String? id,
+      required final String firstName,
       required final String surname,
       required final String bvn,
-      @JsonKey(name: "profile_pics") required final String? profilePics,
-      @JsonKey(name: "date_created") final DateTime? dateCreated}) = _$_AppUser;
+      required final String address,
+      required final String state,
+      required final String? profilePics,
+      required final DateTime dateCreated}) = _$_AppUser;
   const _AppUser._() : super._();
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  String get username;
-  @override
-  @JsonKey(name: "first_name")
   String get firstName;
   @override
   String get surname;
   @override
   String get bvn;
   @override
-  @JsonKey(name: "profile_pics")
+  String get address;
+  @override
+  String get state;
+  @override
   String? get profilePics;
   @override
-  @JsonKey(name: "date_created")
-  DateTime? get dateCreated;
+  DateTime get dateCreated;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>
