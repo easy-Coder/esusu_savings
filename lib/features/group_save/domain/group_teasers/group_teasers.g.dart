@@ -11,10 +11,7 @@ _$_GroupTeaser _$$_GroupTeaserFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       groupId: json['group_id'] as String,
       authorId: json['author_id'] as String,
-      members: (json['members'] as List<dynamic>?)
-              ?.map((e) => Map<String, String>.from(e as Map))
-              .toList() ??
-          const [],
+      members: json['members'] as List<dynamic>? ?? const [],
       name: json['name'] as String,
     );
 

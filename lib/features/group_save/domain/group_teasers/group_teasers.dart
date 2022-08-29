@@ -12,7 +12,7 @@ class GroupTeaser with _$GroupTeaser {
       {String? id,
       required String groupId,
       required String authorId,
-      @Default([]) List<Map<String, String>> members,
+      @Default([]) List members,
       required String name}) = _GroupTeaser;
 
   factory GroupTeaser.fromJson(Map<String, dynamic> json) =>
