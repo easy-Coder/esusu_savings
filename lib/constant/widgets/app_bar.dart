@@ -26,3 +26,51 @@ class CustomBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
+
+class CustomSliverAppBar extends StatelessWidget {
+  final Widget title;
+  final List<Widget>? actions;
+
+  const CustomSliverAppBar({super.key, required this.title, this.actions});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverPersistentHeader(
+      delegate: _CustomSliverAppBarDelegate(
+          title, actions, MediaQuery.of(context).padding),
+      pinned: true,
+      floating: false,
+    );
+  }
+}
+
+class _CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  final Widget title;
+  final List<Widget>? actions;
+  final EdgeInsets safePadding;
+
+  _CustomSliverAppBarDelegate(this.title, this.actions, this.safePadding);
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return CustomBar(
+      title: title,
+      actions: actions,
+    );
+  }
+
+  @override
+  double get maxExtent => minExtent;
+
+  @override
+  double get minExtent => safePadding.top + kToolbarHeight;
+
+  @override
+  bool shouldRebuild(_CustomSliverAppBarDelegate oldDelegate) {
+    return (oldDelegate.title != title) ||
+        (oldDelegate.actions != actions) ||
+        (oldDelegate.maxExtent != maxExtent) ||
+        (oldDelegate.minExtent != minExtent) ||
+        (oldDelegate.safePadding != safePadding);
+  }
+}
