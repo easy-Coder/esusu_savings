@@ -15,11 +15,19 @@ _$_GroupTeaser _$$_GroupTeaserFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$_GroupTeaserToJson(_$_GroupTeaser instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'group_id': instance.groupId,
-      'author_id': instance.authorId,
-      'members': instance.members,
-      'name': instance.name,
-    };
+Map<String, dynamic> _$$_GroupTeaserToJson(_$_GroupTeaser instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  val['group_id'] = instance.groupId;
+  val['author_id'] = instance.authorId;
+  val['members'] = instance.members;
+  val['name'] = instance.name;
+  return val;
+}

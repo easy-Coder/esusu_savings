@@ -23,8 +23,16 @@ mixin _$Group {
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<String> get members => throw _privateConstructorUsedError;
+  int get totalParticipant => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
-  double get savingGoal => throw _privateConstructorUsedError;
+
+  /// only needed for goal oriented plan
+  double? get savingGoal => throw _privateConstructorUsedError;
+
+  /// only needed for goal oriented plan
+  DateTime? get duration => throw _privateConstructorUsedError;
+
+  /// will be calculated if group type is goal oriented.
   double get savingAmount => throw _privateConstructorUsedError;
   GroupsType get type => throw _privateConstructorUsedError;
 
@@ -41,8 +49,10 @@ abstract class $GroupCopyWith<$Res> {
       {String? id,
       String name,
       List<String> members,
+      int totalParticipant,
       String author,
-      double savingGoal,
+      double? savingGoal,
+      DateTime? duration,
       double savingAmount,
       GroupsType type});
 }
@@ -60,8 +70,10 @@ class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? members = freezed,
+    Object? totalParticipant = freezed,
     Object? author = freezed,
     Object? savingGoal = freezed,
+    Object? duration = freezed,
     Object? savingAmount = freezed,
     Object? type = freezed,
   }) {
@@ -78,6 +90,10 @@ class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      totalParticipant: totalParticipant == freezed
+          ? _value.totalParticipant
+          : totalParticipant // ignore: cast_nullable_to_non_nullable
+              as int,
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
@@ -85,7 +101,11 @@ class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
       savingGoal: savingGoal == freezed
           ? _value.savingGoal
           : savingGoal // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      duration: duration == freezed
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       savingAmount: savingAmount == freezed
           ? _value.savingAmount
           : savingAmount // ignore: cast_nullable_to_non_nullable
@@ -107,8 +127,10 @@ abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
       {String? id,
       String name,
       List<String> members,
+      int totalParticipant,
       String author,
-      double savingGoal,
+      double? savingGoal,
+      DateTime? duration,
       double savingAmount,
       GroupsType type});
 }
@@ -127,8 +149,10 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? members = freezed,
+    Object? totalParticipant = freezed,
     Object? author = freezed,
     Object? savingGoal = freezed,
+    Object? duration = freezed,
     Object? savingAmount = freezed,
     Object? type = freezed,
   }) {
@@ -145,6 +169,10 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      totalParticipant: totalParticipant == freezed
+          ? _value.totalParticipant
+          : totalParticipant // ignore: cast_nullable_to_non_nullable
+              as int,
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
@@ -152,7 +180,11 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
       savingGoal: savingGoal == freezed
           ? _value.savingGoal
           : savingGoal // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      duration: duration == freezed
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       savingAmount: savingAmount == freezed
           ? _value.savingAmount
           : savingAmount // ignore: cast_nullable_to_non_nullable
@@ -172,8 +204,10 @@ class _$_Group extends _Group {
       {this.id,
       required this.name,
       final List<String> members = const [],
+      required this.totalParticipant,
       required this.author,
-      required this.savingGoal,
+      this.savingGoal,
+      this.duration,
       required this.savingAmount,
       required this.type})
       : _members = members,
@@ -195,9 +229,19 @@ class _$_Group extends _Group {
   }
 
   @override
-  final String author;
+  final int totalParticipant;
   @override
-  final double savingGoal;
+  final String author;
+
+  /// only needed for goal oriented plan
+  @override
+  final double? savingGoal;
+
+  /// only needed for goal oriented plan
+  @override
+  final DateTime? duration;
+
+  /// will be calculated if group type is goal oriented.
   @override
   final double savingAmount;
   @override
@@ -205,7 +249,7 @@ class _$_Group extends _Group {
 
   @override
   String toString() {
-    return 'Group(id: $id, name: $name, members: $members, author: $author, savingGoal: $savingGoal, savingAmount: $savingAmount, type: $type)';
+    return 'Group(id: $id, name: $name, members: $members, totalParticipant: $totalParticipant, author: $author, savingGoal: $savingGoal, duration: $duration, savingAmount: $savingAmount, type: $type)';
   }
 
   @override
@@ -216,9 +260,12 @@ class _$_Group extends _Group {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
+            const DeepCollectionEquality()
+                .equals(other.totalParticipant, totalParticipant) &&
             const DeepCollectionEquality().equals(other.author, author) &&
             const DeepCollectionEquality()
                 .equals(other.savingGoal, savingGoal) &&
+            const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality()
                 .equals(other.savingAmount, savingAmount) &&
             const DeepCollectionEquality().equals(other.type, type));
@@ -231,8 +278,10 @@ class _$_Group extends _Group {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(_members),
+      const DeepCollectionEquality().hash(totalParticipant),
       const DeepCollectionEquality().hash(author),
       const DeepCollectionEquality().hash(savingGoal),
+      const DeepCollectionEquality().hash(duration),
       const DeepCollectionEquality().hash(savingAmount),
       const DeepCollectionEquality().hash(type));
 
@@ -254,8 +303,10 @@ abstract class _Group extends Group {
       {final String? id,
       required final String name,
       final List<String> members,
+      required final int totalParticipant,
       required final String author,
-      required final double savingGoal,
+      final double? savingGoal,
+      final DateTime? duration,
       required final double savingAmount,
       required final GroupsType type}) = _$_Group;
   const _Group._() : super._();
@@ -269,10 +320,20 @@ abstract class _Group extends Group {
   @override
   List<String> get members;
   @override
+  int get totalParticipant;
+  @override
   String get author;
   @override
-  double get savingGoal;
+
+  /// only needed for goal oriented plan
+  double? get savingGoal;
   @override
+
+  /// only needed for goal oriented plan
+  DateTime? get duration;
+  @override
+
+  /// will be calculated if group type is goal oriented.
   double get savingAmount;
   @override
   GroupsType get type;

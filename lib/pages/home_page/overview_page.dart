@@ -4,11 +4,17 @@ import 'package:flutter/material.dart';
 import '../../constant/widgets/cards.dart';
 import '../../constant/widgets/space.dart';
 
-class OverviewPage extends StatelessWidget {
-  const OverviewPage({
+class OverviewPage extends StatefulWidget {
+  OverviewPage({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<OverviewPage> createState() => _OverviewPageState();
+}
+
+class _OverviewPageState extends State<OverviewPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -21,12 +27,7 @@ class OverviewPage extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.add),
-            ),
-          ],
+          
         ),
         SliverPadding(
           padding: EdgeInsets.symmetric(
@@ -45,7 +46,7 @@ class OverviewPage extends StatelessWidget {
                   ),
                   color: Theme.of(context).brightness == Brightness.light
                       ? Color(0xffD3D3D3)
-                      : Theme.of(context).colorScheme.primary,
+                      : Color(0xff1976D2),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -134,7 +135,7 @@ class OverviewPage extends StatelessWidget {
                       ),
                     ),
                     const Space(
-                      width: 30,
+                      width: 40,
                     ),
                     GestureDetector(
                       onTap: null,
@@ -164,7 +165,7 @@ class OverviewPage extends StatelessWidget {
                       ),
                     ),
                     const Space(
-                      width: 30,
+                      width: 40,
                     ),
                     GestureDetector(
                       onTap: null,
@@ -398,4 +399,7 @@ class OverviewPage extends StatelessWidget {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

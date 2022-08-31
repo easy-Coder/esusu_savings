@@ -4,6 +4,7 @@ import 'package:esusu_savings/features/account/service/profile_services.dart';
 import 'package:esusu_savings/features/authenticate/presentation/login_page.dart';
 import 'package:esusu_savings/features/authenticate/presentation/signup_page.dart';
 import 'package:esusu_savings/features/authenticate/repositries/auth_repositry.dart';
+import 'package:esusu_savings/features/group_save/presentation/create_group/create_group_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -97,7 +98,19 @@ class RouterNotifier extends ChangeNotifier {
         ),
         GoRoute(
           path: "/",
-          builder: (context, state) => HomeScreen(),
+          redirect: (state) => '/pages/invest',
+        ),
+        GoRoute(
+          path: "/pages/:page",
+          builder: (context, state) {
+            final page = state.params['page']!;
+            return HomeScreen(key: state.pageKey, page: page);
+          },
+          routes: [],
+        ),
+        GoRoute(
+          path: "/create-group",
+          builder: (context, state) => CreateGroupPage(),
         ),
       ];
 }

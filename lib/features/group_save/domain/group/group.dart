@@ -8,14 +8,23 @@ part 'group.g.dart';
 @freezed
 class Group with _$Group {
   const Group._();
-  const factory Group(
-      {String? id,
-      required String name,
-      @Default([]) List<String> members,
-      required String author,
-      required double savingGoal,
-      required double savingAmount,
-      required GroupsType type}) = _Group;
+  const factory Group({
+    String? id,
+    required String name,
+    @Default([]) List<String> members,
+    required int totalParticipant,
+    required String author,
+
+    /// only needed for goal oriented plan
+    double? savingGoal,
+
+    /// only needed for goal oriented plan
+    DateTime? duration,
+
+    /// will be calculated if group type is goal oriented.
+    required double savingAmount,
+    required GroupsType type,
+  }) = _Group;
 
   factory Group.fromJson(Map<String, dynamic> json) => _$GroupFromJson(json);
 

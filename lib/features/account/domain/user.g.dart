@@ -17,14 +17,22 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       dateCreated: DateTime.parse(json['date_created'] as String),
     );
 
-Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'first_name': instance.firstName,
-      'surname': instance.surname,
-      'bvn': instance.bvn,
-      'address': instance.address,
-      'state': instance.state,
-      'profile_pics': instance.profilePics,
-      'date_created': instance.dateCreated.toIso8601String(),
-    };
+Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  val['first_name'] = instance.firstName;
+  val['surname'] = instance.surname;
+  val['bvn'] = instance.bvn;
+  val['address'] = instance.address;
+  val['state'] = instance.state;
+  writeNotNull('profile_pics', instance.profilePics);
+  val['date_created'] = instance.dateCreated.toIso8601String();
+  return val;
+}
