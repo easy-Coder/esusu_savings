@@ -22,7 +22,7 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
 mixin _$Group {
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  List<String> get members => throw _privateConstructorUsedError;
+  List<InvitedUser?> get members => throw _privateConstructorUsedError;
   int get totalParticipant => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
 
@@ -48,7 +48,7 @@ abstract class $GroupCopyWith<$Res> {
   $Res call(
       {String? id,
       String name,
-      List<String> members,
+      List<InvitedUser?> members,
       int totalParticipant,
       String author,
       double? savingGoal,
@@ -89,7 +89,7 @@ class _$GroupCopyWithImpl<$Res> implements $GroupCopyWith<$Res> {
       members: members == freezed
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<InvitedUser?>,
       totalParticipant: totalParticipant == freezed
           ? _value.totalParticipant
           : totalParticipant // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ abstract class _$$_GroupCopyWith<$Res> implements $GroupCopyWith<$Res> {
   $Res call(
       {String? id,
       String name,
-      List<String> members,
+      List<InvitedUser?> members,
       int totalParticipant,
       String author,
       double? savingGoal,
@@ -168,7 +168,7 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
       members: members == freezed
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<InvitedUser?>,
       totalParticipant: totalParticipant == freezed
           ? _value.totalParticipant
           : totalParticipant // ignore: cast_nullable_to_non_nullable
@@ -199,19 +199,18 @@ class __$$_GroupCopyWithImpl<$Res> extends _$GroupCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Group extends _Group {
+class _$_Group implements _Group {
   const _$_Group(
       {this.id,
       required this.name,
-      final List<String> members = const [],
+      final List<InvitedUser?> members = const [],
       required this.totalParticipant,
       required this.author,
       this.savingGoal,
       this.duration,
       required this.savingAmount,
       required this.type})
-      : _members = members,
-        super._();
+      : _members = members;
 
   factory _$_Group.fromJson(Map<String, dynamic> json) =>
       _$$_GroupFromJson(json);
@@ -220,10 +219,10 @@ class _$_Group extends _Group {
   final String? id;
   @override
   final String name;
-  final List<String> _members;
+  final List<InvitedUser?> _members;
   @override
   @JsonKey()
-  List<String> get members {
+  List<InvitedUser?> get members {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_members);
   }
@@ -298,18 +297,17 @@ class _$_Group extends _Group {
   }
 }
 
-abstract class _Group extends Group {
+abstract class _Group implements Group {
   const factory _Group(
       {final String? id,
       required final String name,
-      final List<String> members,
+      final List<InvitedUser?> members,
       required final int totalParticipant,
       required final String author,
       final double? savingGoal,
       final DateTime? duration,
       required final double savingAmount,
       required final GroupsType type}) = _$_Group;
-  const _Group._() : super._();
 
   factory _Group.fromJson(Map<String, dynamic> json) = _$_Group.fromJson;
 
@@ -318,7 +316,7 @@ abstract class _Group extends Group {
   @override
   String get name;
   @override
-  List<String> get members;
+  List<InvitedUser?> get members;
   @override
   int get totalParticipant;
   @override

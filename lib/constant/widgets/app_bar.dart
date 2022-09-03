@@ -53,10 +53,7 @@ class _CustomSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return CustomBar(
-      title: title,
-      actions: actions,
-    );
+    return SliverAppBar.large(title: title, actions: actions,);
   }
 
   @override

@@ -7,7 +7,8 @@ class Cards extends StatelessWidget {
     this.color,
     required this.child,
     this.width,
-    this.height, this.margin,
+    this.height,
+    this.margin,
   }) : super(key: key);
 
   final EdgeInsetsGeometry? padding;
@@ -19,20 +20,16 @@ class Cards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8.0),
-      child: Container(
-        margin: margin,
+    return Container(
+      margin: margin,
+      padding: padding ?? const EdgeInsets.all(0.0),
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
         color: color ?? Theme.of(context).colorScheme.surface,
-        child: SizedBox(
-          width: width,
-          height: height,
-          child: Padding(
-            padding: padding ?? const EdgeInsets.all(0.0),
-            child: child,
-          ),
-        ),
       ),
+      child: child,
     );
   }
 }

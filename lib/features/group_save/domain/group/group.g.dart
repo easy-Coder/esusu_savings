@@ -10,7 +10,9 @@ _$_Group _$$_GroupFromJson(Map<String, dynamic> json) => _$_Group(
       id: json['id'] as String?,
       name: json['name'] as String,
       members: (json['members'] as List<dynamic>?)
-              ?.map((e) => e as String)
+              ?.map((e) => e == null
+                  ? null
+                  : InvitedUser.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       totalParticipant: json['total_participant'] as int,
@@ -34,7 +36,7 @@ Map<String, dynamic> _$$_GroupToJson(_$_Group instance) {
 
   writeNotNull('id', instance.id);
   val['name'] = instance.name;
-  val['members'] = instance.members;
+  val['members'] = instance.members.map((e) => e?.toJson()).toList();
   val['total_participant'] = instance.totalParticipant;
   val['author'] = instance.author;
   writeNotNull('saving_goal', instance.savingGoal);

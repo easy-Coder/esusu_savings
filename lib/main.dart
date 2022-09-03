@@ -28,11 +28,11 @@ class MyApp extends ConsumerWidget {
       routerDelegate: router.routerDelegate,
       title: "Esusu Savings",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData.from(
         useMaterial3: true,
         colorScheme: lightColorScheme,
       ),
-      darkTheme: ThemeData(
+      darkTheme: ThemeData.from(
         useMaterial3: true,
         colorScheme: darkColorScheme,
       ),

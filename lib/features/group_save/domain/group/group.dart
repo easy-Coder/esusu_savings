@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:esusu_savings/constant/enum.dart';
+import 'package:esusu_savings/features/group_save/domain/group_member/invited_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'group.freezed.dart';
@@ -7,11 +8,10 @@ part 'group.g.dart';
 
 @freezed
 class Group with _$Group {
-  const Group._();
   const factory Group({
     String? id,
     required String name,
-    @Default([]) List<String> members,
+    @Default([]) List<InvitedUser?> members,
     required int totalParticipant,
     required String author,
 

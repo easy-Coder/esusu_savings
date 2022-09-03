@@ -15,7 +15,7 @@ class GroupTeaserRepositry {
   Stream<List<GroupTeaser?>> getAllGroupTeaserForUser(String id) {
     final result = _firestore
         .collection("group_teaser")
-        .where("members", arrayContains: id)
+        .where("members." + id, isNotEqualTo: '')
         .snapshots();
     return result.map((event) =>
         event.docs.map((doc) => GroupTeaser.fromDocuments(doc)).toList());

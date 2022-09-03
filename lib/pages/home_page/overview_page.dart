@@ -19,13 +19,10 @@ class _OverviewPageState extends State<OverviewPage>
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        CustomSliverAppBar(
+        SliverAppBar.large(
           title: Text(
             "Hello, John Doe",
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            
           ),
           
         ),

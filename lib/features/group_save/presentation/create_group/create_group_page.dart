@@ -262,7 +262,6 @@ class _CreateGroupPageState extends ConsumerState<CreateGroupPage> {
                         'saving_amount': savingAmount,
                         'type': currentOption!.name,
                         'author': user!.uid,
-                        'members': [user.uid],
                       };
                       group = Group.fromJson(newFormValue);
                     } else {
@@ -270,17 +269,18 @@ class _CreateGroupPageState extends ConsumerState<CreateGroupPage> {
                         ...formValue,
                         'type': currentOption!.name,
                         'author': user!.uid,
-                        'members': [user.uid],
                       });
                     }
                     print(group.toJson());
-                    ref
-                        .read(createGroupNotifierProvider.notifier)
-                        .create_group(group);
-                    _formKey.currentState!.reset();
-                    ref.read(formProvider.state).state = {};
-                    ref.read(groupTypeProvider.state).state = null;
-                    context.pop();
+                    try {
+                      ref
+                          .read(createGroupNotifierProvider.notifier)
+                          .create_group(group);
+                      _formKey.currentState!.reset();
+                      ref.read(formProvider.state).state = {};
+                      ref.read(groupTypeProvider.state).state = null;
+                      context.pop();
+                    } catch (e) {}
                   }
                 }
               },

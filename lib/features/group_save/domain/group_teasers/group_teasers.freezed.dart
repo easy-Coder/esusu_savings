@@ -22,8 +22,9 @@ GroupTeaser _$GroupTeaserFromJson(Map<String, dynamic> json) {
 mixin _$GroupTeaser {
   String? get id => throw _privateConstructorUsedError;
   String get groupId => throw _privateConstructorUsedError;
+  GroupsType get type => throw _privateConstructorUsedError;
   String get authorId => throw _privateConstructorUsedError;
-  List<dynamic> get members => throw _privateConstructorUsedError;
+  Map<String, InvitedUser?> get members => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,8 +41,9 @@ abstract class $GroupTeaserCopyWith<$Res> {
   $Res call(
       {String? id,
       String groupId,
+      GroupsType type,
       String authorId,
-      List<dynamic> members,
+      Map<String, InvitedUser?> members,
       String name});
 }
 
@@ -57,6 +59,7 @@ class _$GroupTeaserCopyWithImpl<$Res> implements $GroupTeaserCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? groupId = freezed,
+    Object? type = freezed,
     Object? authorId = freezed,
     Object? members = freezed,
     Object? name = freezed,
@@ -70,6 +73,10 @@ class _$GroupTeaserCopyWithImpl<$Res> implements $GroupTeaserCopyWith<$Res> {
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as GroupsType,
       authorId: authorId == freezed
           ? _value.authorId
           : authorId // ignore: cast_nullable_to_non_nullable
@@ -77,7 +84,7 @@ class _$GroupTeaserCopyWithImpl<$Res> implements $GroupTeaserCopyWith<$Res> {
       members: members == freezed
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as Map<String, InvitedUser?>,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -96,8 +103,9 @@ abstract class _$$_GroupTeaserCopyWith<$Res>
   $Res call(
       {String? id,
       String groupId,
+      GroupsType type,
       String authorId,
-      List<dynamic> members,
+      Map<String, InvitedUser?> members,
       String name});
 }
 
@@ -115,6 +123,7 @@ class __$$_GroupTeaserCopyWithImpl<$Res> extends _$GroupTeaserCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? groupId = freezed,
+    Object? type = freezed,
     Object? authorId = freezed,
     Object? members = freezed,
     Object? name = freezed,
@@ -128,6 +137,10 @@ class __$$_GroupTeaserCopyWithImpl<$Res> extends _$GroupTeaserCopyWithImpl<$Res>
           ? _value.groupId
           : groupId // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as GroupsType,
       authorId: authorId == freezed
           ? _value.authorId
           : authorId // ignore: cast_nullable_to_non_nullable
@@ -135,7 +148,7 @@ class __$$_GroupTeaserCopyWithImpl<$Res> extends _$GroupTeaserCopyWithImpl<$Res>
       members: members == freezed
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as Map<String, InvitedUser?>,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -150,8 +163,9 @@ class _$_GroupTeaser extends _GroupTeaser {
   _$_GroupTeaser(
       {this.id,
       required this.groupId,
+      required this.type,
       required this.authorId,
-      final List<dynamic> members = const [],
+      final Map<String, InvitedUser?> members = const {},
       required this.name})
       : _members = members,
         super._();
@@ -164,13 +178,15 @@ class _$_GroupTeaser extends _GroupTeaser {
   @override
   final String groupId;
   @override
+  final GroupsType type;
+  @override
   final String authorId;
-  final List<dynamic> _members;
+  final Map<String, InvitedUser?> _members;
   @override
   @JsonKey()
-  List<dynamic> get members {
+  Map<String, InvitedUser?> get members {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_members);
+    return EqualUnmodifiableMapView(_members);
   }
 
   @override
@@ -178,7 +194,7 @@ class _$_GroupTeaser extends _GroupTeaser {
 
   @override
   String toString() {
-    return 'GroupTeaser(id: $id, groupId: $groupId, authorId: $authorId, members: $members, name: $name)';
+    return 'GroupTeaser(id: $id, groupId: $groupId, type: $type, authorId: $authorId, members: $members, name: $name)';
   }
 
   @override
@@ -188,6 +204,7 @@ class _$_GroupTeaser extends _GroupTeaser {
             other is _$_GroupTeaser &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.groupId, groupId) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.authorId, authorId) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
             const DeepCollectionEquality().equals(other.name, name));
@@ -199,6 +216,7 @@ class _$_GroupTeaser extends _GroupTeaser {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(groupId),
+      const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(authorId),
       const DeepCollectionEquality().hash(_members),
       const DeepCollectionEquality().hash(name));
@@ -220,8 +238,9 @@ abstract class _GroupTeaser extends GroupTeaser {
   factory _GroupTeaser(
       {final String? id,
       required final String groupId,
+      required final GroupsType type,
       required final String authorId,
-      final List<dynamic> members,
+      final Map<String, InvitedUser?> members,
       required final String name}) = _$_GroupTeaser;
   _GroupTeaser._() : super._();
 
@@ -233,9 +252,11 @@ abstract class _GroupTeaser extends GroupTeaser {
   @override
   String get groupId;
   @override
+  GroupsType get type;
+  @override
   String get authorId;
   @override
-  List<dynamic> get members;
+  Map<String, InvitedUser?> get members;
   @override
   String get name;
   @override
